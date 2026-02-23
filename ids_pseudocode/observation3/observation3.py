@@ -17,7 +17,7 @@ FEATURE_COLS = [
     'Prev_Interver', 'ID_Prev_Interver', 'Data_Prev_Interver',
     'ID_Frequency', 'Data_Frequency', 'Frequency_diff'
 ]
-DROP_COLS = ['Label', 'Class', 'Interface', 'Timestamp', 'Data']
+DROP_COLS = ['Label', 'Class', 'Bus', 'Timestamp', 'Data']
 
 
 # ── Data Loading ──────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ def load_data(train_path, test_path):
 def extract_features(df):
     """
     Separate feature matrix X and label vector y from dataframe.
-    Drop non-feature columns: Label, Class, Interface, Timestamp, Data.
+    Drop non-feature columns: Label, Class, Bus, Timestamp, Data.
     Returns X (features), y (Label).
     """
     pass
@@ -72,19 +72,19 @@ class CANIDSModel:
     def evaluate(self, X_test, y_test):
         """
         Compute accuracy, precision, recall, F1, confusion matrix, report.
-        Returns metrics dict including y_pred for downstream per-interface breakdown.
+        Returns metrics dict including y_pred for downstream per-bus breakdown.
         """
         pass
 
 
-# ── Per-Interface Training ────────────────────────────────────────────────────
+# ── Per-Bus Training ────────────────────────────────────────────────────
 
-def train_and_evaluate_interface(train_df, test_df, interface_type, model_types=MODEL_TYPES):
+def train_and_evaluate_bus(train_df, test_df, bus_type, model_types=MODEL_TYPES):
     """
-    Train and evaluate using only one interface's data.
+    Train and evaluate using only one bus's data.
 
     Steps:
-      1. Filter train/test by Interface == interface_type
+      1. Filter train/test by Bus == bus_type
       2. extract_features() → X_train, X_test, y_train, y_test
       3. LabelEncoder + StandardScaler (fit on train only)
       4. Train/Val split (80/20, stratified)
@@ -97,16 +97,16 @@ def train_and_evaluate_interface(train_df, test_df, interface_type, model_types=
 
 def train_and_evaluate_combined(train_df, test_df, model_types=MODEL_TYPES):
     """
-    Train on all interfaces combined, then break down results per interface.
+    Train on all buss combined, then break down results per bus.
 
     Steps:
-      1. extract_features() on full train/test (no interface filter)
+      1. extract_features() on full train/test (no bus filter)
       2. LabelEncoder + StandardScaler (fit on train only)
       3. Train/Val split (80/20, stratified)
       4. For each model_type: build → train → evaluate
-      5. Per-interface breakdown:
-           for each interface in [B-CAN, C-CAN, P-CAN]:
-               apply interface mask to y_test and y_pred → compute metrics
+      5. Per-bus breakdown:
+           for each bus in [B-CAN, C-CAN, P-CAN]:
+               apply bus mask to y_test and y_pred → compute metrics
     """
     pass
 
@@ -118,13 +118,13 @@ def main():
     Execution flow:
 
     1. load_data() → train_df, test_df
-    2. Per-interface loop:
-         for interface in [B-CAN, C-CAN, P-CAN]:
-             train_and_evaluate_interface()
+    2. Per-bus loop:
+         for bus in [B-CAN, C-CAN, P-CAN]:
+             train_and_evaluate_bus()
     3. Combined training:
-         train_and_evaluate_combined()    → includes per-interface breakdown
+         train_and_evaluate_combined()    → includes per-bus breakdown
     4. Print summary table:
-         interface × model → Accuracy / Precision / Recall / F1
+         bus × model → Accuracy / Precision / Recall / F1
     """
     pass
 
