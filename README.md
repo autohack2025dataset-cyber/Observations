@@ -1,7 +1,7 @@
-# IDS Pseudocode — AutoHack2025 Dataset
+# IDS Pseudocode — AutoHack Dataset
 
 This repository provides an IDS (Intrusion Detection System) implementation guide  
-based on the **AutoHack2025 CAN bus dataset**.  
+based on the **AutoHack dataset**.  
 The pseudocode is designed to ensure reproducibility of experiments described in the paper.
 
 ---
