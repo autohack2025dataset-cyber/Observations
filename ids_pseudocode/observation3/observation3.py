@@ -3,7 +3,7 @@ import os
 
 # ── Constants ─────────────────────────────────────────────────────────────────
 
-INTERFACES  = ['B-CAN', 'C-CAN', 'P-CAN']
+BUSES       = ['B-CAN', 'C-CAN', 'P-CAN']
 MODEL_TYPES = ['RF', 'XGBoost']
 
 LABEL_MAP = {
@@ -17,7 +17,7 @@ FEATURE_COLS = [
     'Prev_Interver', 'ID_Prev_Interver', 'Data_Prev_Interver',
     'ID_Frequency', 'Data_Frequency', 'Frequency_diff'
 ]
-DROP_COLS = ['Label', 'Class', 'Bus', 'Timestamp', 'Data']
+DROP_COLS = ['Label', 'Class', 'Interface', 'Timestamp', 'Data']
 
 
 # ── Data Loading ──────────────────────────────────────────────────────────────
@@ -33,7 +33,7 @@ def load_data(train_path, test_path):
 def extract_features(df):
     """
     Separate feature matrix X and label vector y from dataframe.
-    Drop non-feature columns: Label, Class, Bus, Timestamp, Data.
+    Drop non-feature columns: Label, Class, Interface, Timestamp, Data.
     Returns X (features), y (Label).
     """
     pass
@@ -42,7 +42,7 @@ def extract_features(df):
 # ── Model ─────────────────────────────────────────────────────────────────────
 
 class CANIDSModel:
-    """Unified wrapper for RF / XGBoost / LSTM models."""
+    """Unified wrapper for RF / XGBoost models."""
 
     def __init__(self, model_type='RF'):
         pass
@@ -57,16 +57,11 @@ class CANIDSModel:
         pass
 
     def train(self, X_train, y_train, X_val=None, y_val=None):
-        """
-        Train the model.
-        model.fit(X_train, y_train)
-        """
+        """Train the model: model.fit(X_train, y_train)"""
         pass
 
     def predict(self, X_test):
-        """
-        Return predicted class indices.
-        """
+        """Return predicted class indices."""
         pass
 
     def evaluate(self, X_test, y_test):
@@ -77,14 +72,14 @@ class CANIDSModel:
         pass
 
 
-# ── Per-Bus Training ────────────────────────────────────────────────────
+# ── Per-Bus Training ──────────────────────────────────────────────────────────
 
 def train_and_evaluate_bus(train_df, test_df, bus_type, model_types=MODEL_TYPES):
     """
     Train and evaluate using only one bus's data.
 
     Steps:
-      1. Filter train/test by Bus == bus_type
+      1. Filter train/test by Interface == bus_type
       2. extract_features() → X_train, X_test, y_train, y_test
       3. LabelEncoder + StandardScaler (fit on train only)
       4. Train/Val split (80/20, stratified)
@@ -97,7 +92,7 @@ def train_and_evaluate_bus(train_df, test_df, bus_type, model_types=MODEL_TYPES)
 
 def train_and_evaluate_combined(train_df, test_df, model_types=MODEL_TYPES):
     """
-    Train on all buss combined, then break down results per bus.
+    Train on all buses combined, then break down results per bus.
 
     Steps:
       1. extract_features() on full train/test (no bus filter)
@@ -122,7 +117,7 @@ def main():
          for bus in [B-CAN, C-CAN, P-CAN]:
              train_and_evaluate_bus()
     3. Combined training:
-         train_and_evaluate_combined()    → includes per-bus breakdown
+         train_and_evaluate_combined()   → includes per-bus breakdown
     4. Print summary table:
          bus × model → Accuracy / Precision / Recall / F1
     """
