@@ -1,17 +1,3 @@
-"""
-Observation 2 — IDS Model with UDS Traffic Filter
-Two-stage IDS trained with deliberate exclusion of non-periodic UDS normal traffic.
-
-Key design decision:
-  Train set excludes UDS normal traffic (Arbitration_ID >= 0x700, Label == Normal)
-  to simulate a realistic IDS that is only exposed to periodic CAN frames during training.
-  Test set retains UDS normal traffic to evaluate false positive behavior on unseen
-  aperiodic diagnostic traffic.
-
-This skeleton mirrors the structure of ids.py with explicit comments on
-what is included/excluded and why.
-"""
-
 import os
 import pickle
 
