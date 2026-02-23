@@ -1,12 +1,3 @@
-"""
-IDS Model — Skeleton Code
-Two-stage intrusion detection system for CAN bus traffic.
-
-Stage 1 (Class):    Binary classification  → Normal / Attack
-Stage 2 (SubClass): Multi-class classification → Normal / Flooding / Spoofing /
-                                                  Replay / Fuzzing / UDS_Spoofing
-"""
-
 import os
 import pickle
 
