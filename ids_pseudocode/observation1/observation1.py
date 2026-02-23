@@ -14,10 +14,10 @@ import pickle
 # ── Constants ─────────────────────────────────────────────────────────────────
 
 ALL_CLASS    = ['Normal', 'Attack']
-ALL_SUBCLASS = ['Normal', 'Flooding', 'Spoofing', 'Replay', 'Fuzzing', 'UDS_Spoofing']
+ALL_SUBCLASS = ['Normal', 'DoS', 'Spoofing', 'Replay', 'Fuzzing', 'UDS_Spoofing']
 
 LABEL_MAP = {
-    0: 'Normal', 1: 'Flooding', 2: 'Spoofing',
+    0: 'Normal', 1: 'DoS', 2: 'Spoofing',
     3: 'Replay',  4: 'Fuzzing',  5: 'UDS_Spoofing'
 }
 
