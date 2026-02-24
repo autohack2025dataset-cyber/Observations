@@ -1,7 +1,7 @@
 # Observation 1 — IDS Model 
 
 Two-stage intrusion detection system for CAN bus traffic using machine learning.  
-Trained and evaluated on the **AutoHack2025 IDS Dataset**.
+Trained and evaluated on the **AutoHack IDS Dataset**.
 
 ---
 
