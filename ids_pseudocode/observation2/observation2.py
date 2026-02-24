@@ -103,7 +103,7 @@ def load_model(filepath):
 def train_binary(X_train, y_class):
     """
     Train Stage-1 binary classifier: Normal (0) vs Attack (1).
-    Model: XGBClassifier (RandomForest available as alternative)
+    Model: RandomForest (XGBClassifier available as alternative)
     Returns trained clf_C.
     """
     pass
@@ -112,7 +112,7 @@ def train_binary(X_train, y_class):
 def train_multiclass(X_train, y_subclass):
     """
     Train Stage-2 multi-class classifier: attack type identification (0–4).
-    Model: XGBClassifier (RandomForest available as alternative)
+    Model: RandomForest (XGBClassifier available as alternative)
     Returns trained clf_S.
     """
     pass
