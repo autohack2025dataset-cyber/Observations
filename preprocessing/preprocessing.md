@@ -1,6 +1,6 @@
 # CAN Bus IDS Preprocessing
 
-Preprocessing pipeline for the **AutoHack2025 IDS Dataset**.  
+Preprocessing pipeline for the **AutoHack IDS Dataset**.  
 Converts raw CAN bus log files into feature-engineered datasets for intrusion detection model training.
 
 ---
@@ -9,14 +9,14 @@ Converts raw CAN bus log files into feature-engineered datasets for intrusion de
 
 ```
 dataset/
-└── AutoHack2025_IDS_Dataset_GA_20251121/
+└── AutoHack_Dataset/
     └── Interface/
         ├── train/
-        │   ├── autohack2025_train_data_interface.csv
-        │   └── autohack2025_train_label_interface.csv
+        │   ├── autohack_train_data_interface.csv
+        │   └── autohack_train_label_interface.csv
         └── test/
-            ├── autohack2025_test_data_interface.csv
-            └── autohack2025_test_label_interface.csv
+            ├── autohack_test_data_interface.csv
+            └── autohack_test_label_interface.csv
 ```
 
 ### Raw Data Format
