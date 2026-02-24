@@ -61,12 +61,12 @@ test = df[df['Label'] != 5]
 
 ### Stage 1 — Binary Classification
 - Task: Normal (0) vs Attack (1)
-- Model: XGBoost *(RandomForest available as alternative)*
+- Model: RandomForest
 - Saved as: `{name}_C.pkl`
 
 ### Stage 2 — Multi-class Classification
 - Task: Attack type identification (Normal / Flooding / Spoofing / Replay / Fuzzing)
-- Model: XGBoost *(RandomForest available as alternative)*
+- Model: RandomForest available as alternative
 - Saved as: `{name}_S.pkl`
 - RF hyperparameters: `n_estimators=130`, `max_depth=30`
 
