@@ -62,19 +62,19 @@ def main():
     Load raw train/test label CSVs, apply processing(), and save as proc.csv files.
 
     Input  : dataset/.../Interface/{train,test}/*labels.csv
-    Output : source/AutoHack2025/train_proc.csv
-             source/AutoHack2025/test_proc.csv
+    Output : source/AutoHack/train_proc.csv
+             source/AutoHack/test_proc.csv
     """
 
     program_path = os.getcwd()
 
     # Paths to train and test raw label files
     path_list = [
-        os.path.join(program_path, "dataset", "AutoHack2025_IDS_Dataset_GA_20251121", "Interface", "train"),
-        os.path.join(program_path, "dataset", "AutoHack2025_IDS_Dataset_GA_20251121", "Interface", "test"),
+        os.path.join(program_path, "dataset", "AutoHack_Dataset", "Interface", "train"),
+        os.path.join(program_path, "dataset", "AutoHack_Dataset", "Interface", "test"),
     ]
 
-    source_path = os.path.join(program_path, "source", "AutoHack2025")
+    source_path = os.path.join(program_path, "source", "AutoHack")
     os.makedirs(source_path, exist_ok=True)
 
     for path in path_list:
