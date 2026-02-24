@@ -29,16 +29,16 @@ ids_pseudocode/
 
 ## Dataset
 
-All experiments use the **AutoHack2025 IDS Dataset**.
+All experiments use the **AutoHack IDS Dataset**.
 
 ```
 Interface/
 ├── train/
-│   ├── autohack2025_train_data_interface.csv
-│   └── autohack2025_train_label_interface.csv
+│   ├── autohack_train_data_interface.csv
+│   └── autohack_train_label_interface.csv
 └── test/
-    ├── autohack2025_test_data_interface.csv
-    └── autohack2025_test_label_interface.csv
+    ├── autohack_test_data_interface.csv
+    └── autohack_test_label_interface.csv
 ```
 
 | Label | Class | Description |
